@@ -1,0 +1,11 @@
+#chart {
+    height: 450px;
+}
+@media (max-width:767px) {
+    #chart {
+        height: 240px;
+    }    
+}
+#chart svg > g:last-child {
+    pointer-events: none;
+}

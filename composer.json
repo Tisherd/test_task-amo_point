@@ -1,0 +1,15 @@
+{
+    "name": "tisherd/amo_point",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tisherd",
+            "email": "mtisherd@gmail.com"
+        }
+    ],
+    "require": {}
+}
