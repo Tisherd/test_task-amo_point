@@ -22,7 +22,7 @@ services:
 
   #Nginx Service
   webserver:
-    image: nginx:alpine
+    image: nginx:latest
     container_name: amo_point_webserver
     restart: on-failure
     tty: true

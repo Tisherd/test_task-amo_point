@@ -11,8 +11,6 @@ RUN set -eux; \
     apt-get upgrade -y; \
     apt-get install -y --no-install-recommends \
             curl \
-            mbstring \
-            intl \
             libmemcached-dev \
             libz-dev \
             libpq-dev \
@@ -34,14 +32,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy existing application directory contents
 COPY . /var/www
 
-# Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+RUN composer install
+
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Change current user to www
 USER www
 
+# Copy existing application directory permissions
+COPY --chown=www:www . /var/www
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
-
-RUN composer install
