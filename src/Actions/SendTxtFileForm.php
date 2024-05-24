@@ -6,13 +6,13 @@ use Src\Files\UploadTxtFile;
 
 class SendTxtFileForm
 {
-    public static function index()
+    public static function exec()
     {
         $uploadFile = $_FILES['txtFileForUpload'] ?? [];
 
         try {
             $uploadTxtFile = new UploadTxtFile($uploadFile);
-
+            
             if ($uploadTxtFile->checkFileForUpload() === true) {
                 $uploadTxtFile->upload();
 
@@ -42,6 +42,6 @@ class SendTxtFileForm
             ];
         }
 
-        return json_encode($response);
+        return $response;
     }
 }

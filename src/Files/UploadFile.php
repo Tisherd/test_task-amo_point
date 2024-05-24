@@ -35,6 +35,9 @@ class UploadFile
     {
         $tmp_name = $this->uploadFile["tmp_name"];
         $filename = basename($this->uploadFile["name"]);
+        if (!file_exists(self::FILES_STORAGE_DIR)) {
+            mkdir(self::FILES_STORAGE_DIR, 0777, true);
+        }
         move_uploaded_file($tmp_name, self::FILES_STORAGE_DIR . $filename);
     }
 }

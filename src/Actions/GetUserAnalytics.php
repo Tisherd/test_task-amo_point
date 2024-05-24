@@ -13,6 +13,6 @@ class GetUserAnalytics
         $data['count_by_city'] = $userAnalytics->selectCountByCity();
         $data['ip_by_hour'] = $userAnalytics->selectCountDistinctIpByHour();
 
-        return json_encode(['data' => $data]);
+        return ['data' => $data];
     }
 }

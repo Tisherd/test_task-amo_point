@@ -31,6 +31,6 @@ class CollectUserAnalytics
             ];
         }
         
-        return json_encode($response);
+        return $response;
     }
 }
