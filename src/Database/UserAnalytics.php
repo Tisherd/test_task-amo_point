@@ -40,14 +40,14 @@ class UserAnalytics
 
     public function selectCountByCity()
     {
-        $sql = "SELECT city, COUNT(id) as 'count' FROM user_analytics GROUP BY city";
+        $sql = "SELECT city, COUNT(id) as 'count' FROM `{$this->tableName}` GROUP BY city";
         return $this->select($sql);
     }
 
     public function selectCountDistinctIpByHour()
     {
         $sql = "SELECT strftime ('%H', created_at) hour, COUNT(DISTINCT ip4) as 'count'
-        FROM user_analytics
+        FROM `{$this->tableName}`
         GROUP BY strftime ('%H',created_at)";
         return $this->select($sql);
     }

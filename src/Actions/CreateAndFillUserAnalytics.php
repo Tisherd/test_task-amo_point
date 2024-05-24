@@ -3,11 +3,26 @@
 namespace Src\Actions;
 
 use Src\Database\UserAnalytics;
+use Src\Database\Users;
 
 class CreateAndFillUserAnalytics
 {
     public static function exec()
     {
+        $users = new Users();
+        $users->createTable();
+
+        $insertData = [
+            'login' => 'admin',
+            'password' => 1234
+        ];
+
+        try {
+            $users->insert($insertData);
+        } catch (\Throwable $th) {
+        }
+        
+
         $userAnalytics = new UserAnalytics();
         $userAnalytics->createTable();
 
@@ -70,10 +85,9 @@ class CreateAndFillUserAnalytics
             ],
         ];
 
-
         foreach($someInsertData as $insertData){
             $userAnalytics->insert($insertData);
         }
-        return 'Создано';
+        return 'Created';
     }
 }

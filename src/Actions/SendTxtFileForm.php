@@ -17,7 +17,7 @@ class SendTxtFileForm
                 $uploadTxtFile->upload();
 
                 $fileText = file_get_contents(ENV['files_storage_dir'] . $uploadFile["name"]);
-                $separatedFileTextArr = explode(' ', $fileText);
+                $separatedFileTextArr = explode(ENV['separator_for_task_1'], $fileText);
 
                 $resBody = [];
 
